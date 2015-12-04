@@ -15,6 +15,11 @@ When(/^I go to the edit page for "(.*?)"$/) do |name|
     visit edit_movie_path(@movie.it)
 end
 
+When(/^I go to the details page for "(.*?)"$/) do |name|
+    @movie = Movie.find_by(title: name)
+    visit movie_path(@movie.it)
+end
+
 Then(/^the director of "(.*?)" should be "(.*?)"$/) do |name, director|
     expect(Movie.find_by(title: name).to eq(director))
 end
